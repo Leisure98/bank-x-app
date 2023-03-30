@@ -1,13 +1,9 @@
 package com.psybergate.bank_x_app.domain.account;
 
-import com.psybergate.bank_x_app.domain.Transaction.Transaction;
-import com.psybergate.bank_x_app.domain.customer.Customer;
 import com.psybergate.bank_x_app.domain.money.Money;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
-import java.util.List;
 
 import static com.psybergate.bank_x_app.domain.Transaction.TransactionRecorder.*;
 
