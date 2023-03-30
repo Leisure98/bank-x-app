@@ -4,9 +4,49 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.10</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.psybergate.bank_x_app</groupId>
     <artifactId>bank-x-app</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>bank-x-app</name>
+    <description>Bank X Application
+
+        Consider the Following Business Case:
+
+        Bank X has defined a specification for a new Banking Application. In keeping up with the
+        trends around the world, Bank X wants to be able to allow both internal and external
+        systems to connect with the new application. The Application must allow new customers to
+        be onboarded and to obtain new accounts. Each customer with be provided with a Current and
+        Savings account upon onboarding and will have their Savings Account credited with a joining
+        bonus of R500.00. Customers should be able to move money between their accounts. Only the
+        Current Account should be enabled to make payments to other accounts. All payments made into
+        the Savings Account will be credited with a 0.5% interest of the current balance. All
+        payments made from the customer’s account will be charged 0.05% of the transaction amount.
+        The application must keep track of every transaction performed on the accounts and allow
+        other systems to retrieve these. The system must send out notifications to the customer for
+        every transaction event. Bank X also want to allow Bank Z be able to debit or credit the
+        customer’s account for any transactions that were handled by Bank Z on behalf of Bank X.
+        Bank Z should be able to send a single immediate transaction or a list of transactions which
+        should be processed immediately. Bank Z should be able to send Bank X a list of transactions
+        that they processed on behalf of Bank X at the end of the business day for reconciliation
+        (Note: this is an offline process).
+
+
+        1. Create a Java Application that addresses the above business case.
+
+        2. The application should be able to run on its own.
+
+        3. Create a private GitHub repository named - bank-x-app
+
+        4. Add GitHub username ‘abjz108’ as a collaborator.
+    </description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -14,4 +54,92 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>2.7.10</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>2.7.10</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.reactivestreams/reactive-streams -->
+        <dependency>
+            <groupId>org.reactivestreams</groupId>
+            <artifactId>reactive-streams</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.14.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.23.Final</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <defaultGoal>package</defaultGoal>
+        <finalName>${project.artifactId}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputDirectory>
+                        C:\myprograms\server\wildfly\wildfly-22.0.1.Final\standalone\deployments
+                    </outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
